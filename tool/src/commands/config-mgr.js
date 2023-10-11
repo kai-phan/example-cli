@@ -1,14 +1,13 @@
 const chalk = require('chalk');
-const pkgUp = require('pkg-up');
+const cosmiconfig = require('cosmiconfig');
+
+const explorerSync = cosmiconfig.cosmiconfigSync('tool');
 
 module.exports = function getConfig() {
-  const configPath = pkgUp.sync({ cwd: process.cwd() });
-  const pkg = require(configPath);
+  const result = explorerSync.search(process.cwd());
 
-  const config = pkg.tool;
-
-  if (config) {
-    return config;
+  if (result?.config) {
+    return result.config;
   } else {
     console.log(chalk.yellowBright('No config found'));
     return {

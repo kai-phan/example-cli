@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 const arg = require('arg');
 const chalk = require('chalk');
-const path = require('path');
-const pkgUp = require('pkg-up');
 
 const getConfig = require('../src/commands/config-mgr');
 const start = require('../src/commands/start');
