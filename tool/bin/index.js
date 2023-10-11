@@ -4,6 +4,9 @@ const chalk = require('chalk');
 const path = require('path');
 const pkgUp = require('pkg-up');
 
+const getConfig = require('../src/commands/config-mgr');
+const start = require('../src/commands/start');
+
 try {
   const args = arg({
     '--start': Boolean,
@@ -11,11 +14,8 @@ try {
   });
 
   if (args['--start']) {
-    const pkgPath = pkgUp.sync({ cwd: process.cwd() });
-    const pkg = require(pkgPath);
-    console.log(pkg);
-
-    console.log(chalk.bgCyanBright('start'));
+    const config = getConfig();
+    start(config);
   }
 } catch (e) {
   console.log(chalk.yellowBright(e.message));
