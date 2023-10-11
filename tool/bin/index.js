@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 const arg = require('arg');
 const chalk = require('chalk');
+const path = require('path');
+const pkgUp = require('pkg-up');
 
 try {
   const args = arg({
@@ -9,6 +11,10 @@ try {
   });
 
   if (args['--start']) {
+    const pkgPath = pkgUp.sync({ cwd: process.cwd() });
+    const pkg = require(pkgPath);
+    console.log(pkg);
+
     console.log(chalk.bgCyanBright('start'));
   }
 } catch (e) {
