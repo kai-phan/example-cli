@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const arg = require('arg');
+const chalk = require('chalk');
 
 try {
   const args = arg({
@@ -8,16 +9,16 @@ try {
   });
 
   if (args['--start']) {
-    console.log('start');
+    console.log(chalk.bgCyanBright('start'));
   }
 } catch (e) {
-  console.log(e.message);
+  console.log(chalk.yellowBright(e.message));
   console.log();
   usage();
 }
 
 function usage() {
-  console.log('Usage: tool [options]');
+  console.log(chalk.whiteBright('Usage: tool [options]'));
   console.log();
   console.log('Options:');
   console.log('  --start    start');
