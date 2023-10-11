@@ -1,6 +1,6 @@
-const chalk = require('chalk');
+const logger = require('../logger')('commands:start');
 
 module.exports = function start(config) {
-  console.log(chalk.greenBright('Start the app'));
-  console.log(chalk.gray('Receive config ' + JSON.stringify(config, null, 2)));
+  logger.highlight('Start the app');
+  logger.debug('Receive config ' + JSON.stringify(config, null, 2));
 }
